@@ -45,6 +45,6 @@ func main() {
 
 	db, err := sql.Open("mysql", "user:password@/dbname") //need driver
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err, db)
 	}
 }
