@@ -43,5 +43,8 @@ func main() {
 		log.Fatalf("Server failed to start: %v\n", err)
 	}
 
-	db, err := sql.Open("mysql", "user:password@/dbname")
+	db, err := sql.Open("mysql", "user:password@/dbname") //need driver
+	if err != nil {
+		log.Fatal(err)
+	}
 }
