@@ -1,0 +1,5 @@
+# Ignore all Git files
+.git/
+
+# Ignore all VSCode files
+.vscode/
