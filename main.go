@@ -1,12 +1,14 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"log"
 	"net/http"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
-// handler function http server
 func helloHandler(w http.ResponseWriter, r *http.Request) {
 	//switch example with cases for Methods
 
@@ -40,4 +42,6 @@ func main() {
 	if err != nil {
 		log.Fatalf("Server failed to start: %v\n", err)
 	}
+
+	db, err := sql.Open("mysql", "user:password@/dbname")
 }
