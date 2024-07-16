@@ -1,31 +1,22 @@
 package main
 
 import (
-	"database/sql"
 	"fmt"
 	"log"
 	"net/http"
-
-	_ "github.com/go-sql-driver/mysql"
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	//switch example with cases for Methods
-
+	// Switch example with cases for Methods
 	switch r.Method {
-
 	case http.MethodGet:
 		fmt.Fprintf(w, "Connected to Server")
-
 	case http.MethodPost:
 		fmt.Fprintf(w, "Hello, POST method!")
-
 	case http.MethodPut:
 		fmt.Fprintf(w, "Hello, PUT method!")
-
 	case http.MethodDelete:
 		fmt.Fprintf(w, "Hello, DELETE method!")
-
 	default:
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
@@ -33,7 +24,9 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// Register the handler function for the root URL path
-	http.HandleFunc("/", helloHandler)
+	fs := http.FileServer(http.Dir("./frontend"))
+	http.Handle("/", fs)
+	http.HandleFunc("/landing", helloHandler)
 
 	PORT := ":8080"
 
@@ -41,10 +34,5 @@ func main() {
 	err := http.ListenAndServe(PORT, nil)
 	if err != nil {
 		log.Fatalf("Server failed to start: %v\n", err)
-	}
-
-	db, err := sql.Open("mysql", "user:password@/dbname") //need driver
-	if err != nil {
-		log.Fatal(err, db)
 	}
 }
