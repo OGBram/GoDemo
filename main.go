@@ -10,13 +10,13 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 	// Switch example with cases for Methods
 	switch r.Method {
 	case http.MethodGet:
-		fmt.Fprintf(w, "Connected to Server")
+		fmt.Fprintf(w, "Connected to Server, GET method!")
 	case http.MethodPost:
-		fmt.Fprintf(w, "Hello, POST method!")
+		fmt.Fprintf(w, "Landing, POST method!")
 	case http.MethodPut:
-		fmt.Fprintf(w, "Hello, PUT method!")
+		fmt.Fprintf(w, "Landing, PUT method!")
 	case http.MethodDelete:
-		fmt.Fprintf(w, "Hello, DELETE method!")
+		fmt.Fprintf(w, "Landing, DELETE method!")
 	default:
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
