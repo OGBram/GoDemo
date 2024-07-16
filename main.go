@@ -23,12 +23,13 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// Register the handler function for the root URL path
+	// Register the frontend and handler function for the root URL path
 	fs := http.FileServer(http.Dir("./frontend"))
 	http.Handle("/", fs)
+	// Register the handler function for the landing URL path
 	http.HandleFunc("/landing", helloHandler)
 
-	PORT := ":8080"
+	PORT := ":8080" //local
 
 	log.Printf("Starting server on %s\n", PORT)
 	err := http.ListenAndServe(PORT, nil)
