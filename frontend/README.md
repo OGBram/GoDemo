@@ -1,6 +1,4 @@
-Bryan Blackburn
-Personal website for art
-& learning to code
-In development
+# Arcade game in development. 
 
-©2024
+[Play](https://ogbram.github.io/gandalf)
+
